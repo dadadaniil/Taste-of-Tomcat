@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-@WebServlet(name = "registerServlet", value = "/register    -servlet")
+@WebServlet(name = "registerServlet", value = "/register-servlet")
 public class RegisterServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(MultiplyServlet.class);
 
