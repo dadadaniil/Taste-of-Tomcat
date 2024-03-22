@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Registration Succeeded</title>
+    <title>Success</title>
 </head>
 <body>
-    <h1>Registration Completed Successfully</h1>
+    <h1>Success</h1>
+    <p>${successMessage}</p>
 </body>
 </html>
