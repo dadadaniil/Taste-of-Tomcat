@@ -1,4 +1,4 @@
-<%@ page import="com.example.firsttomcat.servlets.model.User" %>
+<%@ page import="com.example.firsttomcat.servlet.model.User" %>
 <%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.

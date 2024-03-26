@@ -1,7 +1,7 @@
-package com.example.firsttomcat.servlets.servlets;
+package com.example.firsttomcat.servlet.servlet;
 
-import com.example.firsttomcat.servlets.DatabaseUtil;
-import com.example.firsttomcat.servlets.model.User;
+import com.example.firsttomcat.servlet.model.DatabaseUtil;
+import com.example.firsttomcat.servlet.model.User;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

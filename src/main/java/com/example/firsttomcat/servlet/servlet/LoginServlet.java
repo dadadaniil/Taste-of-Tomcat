@@ -1,8 +1,8 @@
-package com.example.firsttomcat.servlets.servlets;
+package com.example.firsttomcat.servlet.servlet;
 
-import com.example.firsttomcat.servlets.model.User;
-import com.example.firsttomcat.servlets.service.SessionService;
-import com.example.firsttomcat.servlets.service.UserService;
+import com.example.firsttomcat.servlet.model.User;
+import com.example.firsttomcat.servlet.service.SessionService;
+import com.example.firsttomcat.servlet.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

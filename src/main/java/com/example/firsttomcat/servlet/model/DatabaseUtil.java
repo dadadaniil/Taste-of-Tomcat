@@ -1,6 +1,5 @@
-package com.example.firsttomcat.servlets;
+package com.example.firsttomcat.servlet.model;
 
-import com.example.firsttomcat.servlets.model.User;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
@@ -51,7 +50,7 @@ public class DatabaseUtil {
         collection.insertOne(document);
     }
 
-    public User getUserByEmail(String email) {
+    public User findUserByEmail(String email) {
         MongoDatabase database = connection.getDatabase("data_base");
         MongoCollection<Document> collection = database.getCollection("users");
         Document query = new Document("email", email);
@@ -70,5 +69,21 @@ public class DatabaseUtil {
         MongoCollection<Document> collection = database.getCollection("users");
         Document query = new Document("email", email);
         collection.deleteOne(query);
+    }
+
+
+    public void saveVerificationCode(String email, String verificationCode) {
+        MongoDatabase database = connection.getDatabase("data_base");
+        MongoCollection<Document> collection = database.getCollection("verification_codes");
+        Document code = new Document("email", email).append("code", verificationCode);
+        collection.insertOne(code);
+    }
+
+    public boolean checkVerificationCode(String email, String verificationCode) {
+        MongoDatabase database = connection.getDatabase("data_base");
+        MongoCollection<Document> collection = database.getCollection("verification_codes");
+        Document query = new Document("email", email).append("code", verificationCode);
+        Document code = collection.find(query).first();
+        return code != null;
     }
 }

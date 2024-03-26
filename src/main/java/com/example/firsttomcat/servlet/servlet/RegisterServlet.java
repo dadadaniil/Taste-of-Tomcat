@@ -1,6 +1,7 @@
-package com.example.firsttomcat.servlets.servlets;
+package com.example.firsttomcat.servlet.servlet;
 
-import com.example.firsttomcat.servlets.service.UserService;
+import com.example.firsttomcat.servlet.service.UserService;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -30,9 +31,15 @@ public class RegisterServlet extends HttpServlet {
             request.setAttribute("errorMessage", "User with email " + email + " already exists");
             request.getRequestDispatcher("pages/error.jsp").forward(request, response);
         } else {
-            userService.register(username, password, email);
-            logger.info("User with email " + email + " registered");
-            response.sendRedirect("pages/success.jsp");
+            try {
+                userService.register(username, password, email);
+                logger.info("User with email " + email + " registered");
+                response.sendRedirect("pages/success.jsp");
+            } catch (MessagingException e) {
+                logger.error("Error sending email", e);
+                request.setAttribute("errorMessage", "Error sending email");
+                request.getRequestDispatcher("pages/error.jsp").forward(request, response);
+            }
         }
     }
 }

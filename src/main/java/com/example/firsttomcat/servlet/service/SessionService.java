@@ -1,4 +1,4 @@
-package com.example.firsttomcat.servlets.service;
+package com.example.firsttomcat.servlet.service;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;

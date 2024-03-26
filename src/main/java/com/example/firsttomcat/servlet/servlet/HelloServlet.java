@@ -1,4 +1,4 @@
-package com.example.firsttomcat.servlets.servlets;
+package com.example.firsttomcat.servlet.servlet;
 
 import java.io.*;
 
