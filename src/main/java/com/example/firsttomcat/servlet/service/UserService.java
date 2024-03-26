@@ -31,7 +31,7 @@ public class UserService {
 
         String verificationCode = generateVerificationCode();
         databaseUtil.saveVerificationCode(email, verificationCode);
-        EmailUtility.sendConfirmationEmail(email, verificationCode);
+//        EmailUtility.sendConfirmationEmail(email, verificationCode);
     }
 
     private String generateVerificationCode() {

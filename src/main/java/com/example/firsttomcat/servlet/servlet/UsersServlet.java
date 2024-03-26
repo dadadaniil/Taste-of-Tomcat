@@ -19,13 +19,10 @@ public class UsersServlet extends HttpServlet {
 
     private static final Logger logger = LogManager.getLogger(MultiplyServlet.class);
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("UsersServlet doGet");
-
-        System.out.println("UsersServlet doGet");
         DatabaseUtil dbUtil = new DatabaseUtil();
         List<User> users = dbUtil.getUsersList();
-        request.setAttribute("userList", users);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("users.jsp");
-        dispatcher.forward(request, response);
+
+        request.getSession().setAttribute("usersList", users);
+        response.sendRedirect(request.getContextPath() + "/pages/users.jsp");
     }
 }
