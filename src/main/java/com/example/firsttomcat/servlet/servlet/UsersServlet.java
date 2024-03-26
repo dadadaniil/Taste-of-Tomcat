@@ -22,6 +22,8 @@ public class UsersServlet extends HttpServlet {
         DatabaseUtil dbUtil = new DatabaseUtil();
         List<User> users = dbUtil.getUsersList();
 
+        logger.info("Fetched " + users.size() + " users from the database");
+
         request.getSession().setAttribute("usersList", users);
         response.sendRedirect(request.getContextPath() + "/pages/users.jsp");
     }

@@ -10,6 +10,16 @@
 <h1>Users database</h1>
 </body>
 
+<%
+    List<User> usersList = (List<User>) session.getAttribute("usersList");
+    if (usersList == null) {
+        out.println("No users found in the session");
+    } else {
+        out.println("Found " + usersList.size() + " users in the session");
+
+    }
+%>
+
 <table border="1">
     <tr>
         <th>ID</th>
