@@ -86,4 +86,18 @@ public class DatabaseUtil {
         Document code = collection.find(query).first();
         return code != null;
     }
+
+    public void updateUsername(String email, String newUsername) {
+        MongoDatabase database = connection.getDatabase("data_base");
+        MongoCollection<Document> collection = database.getCollection("users");
+
+        // Create a query document to find the user by their email
+        Document query = new Document("email", email);
+
+        // Create an update document to set the new username
+        Document update = new Document("$set", new Document("username", newUsername));
+
+        // Update the user's username
+        collection.updateOne(query, update);
+    }
 }

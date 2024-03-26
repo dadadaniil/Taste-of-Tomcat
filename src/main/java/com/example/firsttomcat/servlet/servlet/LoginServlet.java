@@ -31,12 +31,13 @@ public class LoginServlet extends HttpServlet {
 
         if (user != null) {
             logger.info("User with email " + email + " logged in");
-            request.setAttribute("successMessage", "Now you are logged in");
-            request.getRequestDispatcher("pages/success.jsp").forward(request, response);
+            request.setAttribute("successMessage", "Now you are logged in and can manage your account.");
+            request.getRequestDispatcher("pages/account.jsp").forward(request, response);
+            sessionService.createSession(request, email);
         } else {
             logger.info("Invalid credentials for email " + email);
             request.setAttribute("errorMessage", "Invalid credentials for email " + email);
-            request.getRequestDispatcher("pages/error.jsp").forward(request, response);
+            request.getRequestDispatcher("/pages/login.jsp").forward(request, response);
         }
     }
 }

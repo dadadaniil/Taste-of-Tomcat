@@ -17,7 +17,7 @@ public class RegisterServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger();
     private UserService userService = new UserService();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         logger.info("RegisterServlet doPost");
 
         response.setContentType("text/html");
@@ -29,16 +29,17 @@ public class RegisterServlet extends HttpServlet {
         if (userService.userExists(email)) {
             logger.info("User with email " + email + " already exists");
             request.setAttribute("errorMessage", "User with email " + email + " already exists");
-            request.getRequestDispatcher("pages/error.jsp").forward(request, response);
+            request.getRequestDispatcher("/pages/register.jsp").forward(request, response);
         } else {
             try {
                 userService.register(username, password, email);
                 logger.info("User with email " + email + " registered");
-                response.sendRedirect("pages/success.jsp");
+                request.setAttribute("successMessage", "You have been successfully registered, now you can manage your account.");
+                request.getRequestDispatcher("/pages/account.jsp").forward(request, response);
             } catch (MessagingException e) {
                 logger.error("Error sending email", e);
-                request.setAttribute("errorMessage", "Error sending email");
-                request.getRequestDispatcher("pages/error.jsp").forward(request, response);
+                request.setAttribute("errorMessage", "Error sending email. Please try again.");
+                request.getRequestDispatcher("/pages/register.jsp").forward(request, response);
             }
         }
     }

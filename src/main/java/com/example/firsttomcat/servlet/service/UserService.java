@@ -39,4 +39,19 @@ public class UserService {
         return String.format("%06d", new Random().nextInt(999999));
     }
 
+
+    public void changeUsername(String email, String newUsername) {
+        User user = databaseUtil.findUserByEmail(email);
+        if (user != null) {
+            databaseUtil.updateUsername(email, newUsername);
+        }
+    }
+
+    public void createPost(String email, String postContent) {
+        // Implement this method according to your application's requirements
+    }
+
+    public void deleteAccount(String email) {
+        databaseUtil.deleteUserByEmail(email);
+    }
 }
