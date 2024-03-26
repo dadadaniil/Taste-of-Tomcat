@@ -1,6 +1,6 @@
-package com.example.firsttomcat.servlet.servlet;
+package com.example.firsttomcat.servlet;
 
-import com.example.firsttomcat.servlet.service.UserService;
+import com.example.firsttomcat.service.impl.UserServiceImpl;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet(name = "registerServlet", value = "/register-servlet")
 public class RegisterServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger();
-    private UserService userService = new UserService();
+    private final UserServiceImpl userServiceImpl = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         logger.info("RegisterServlet doPost");
@@ -26,13 +26,13 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
 
-        if (userService.userExists(email)) {
+        if (userServiceImpl.userExists(email)) {
             logger.info("User with email " + email + " already exists");
             request.setAttribute("errorMessage", "User with email " + email + " already exists");
             request.getRequestDispatcher("/pages/register.jsp").forward(request, response);
         } else {
             try {
-                userService.register(username, password, email);
+                userServiceImpl.register(username, password, email);
                 logger.info("User with email " + email + " registered");
                 request.setAttribute("successMessage", "You have been successfully registered, now you can manage your account.");
                 request.getRequestDispatcher("/pages/account.jsp").forward(request, response);

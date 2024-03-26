@@ -1,7 +1,6 @@
-package com.example.firsttomcat.servlet.servlet;
+package com.example.firsttomcat.servlet;
 
-import com.example.firsttomcat.servlet.model.DatabaseUtil;
-import com.example.firsttomcat.servlet.service.UserService;
+import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,10 +14,9 @@ import java.io.IOException;
 @WebServlet(name = "verifyServlet", value = "/verify-servlet")
 public class VerifyServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger();
-    private UserService userService = new UserService();
-    private DatabaseUtil databaseUtil = new DatabaseUtil();
+    private final DatabaseUtilImpl databaseUtil = new DatabaseUtilImpl();
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("VerifyServlet doPost");
 
         response.setContentType("text/html");

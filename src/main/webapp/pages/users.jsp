@@ -1,4 +1,4 @@
-<%@ page import="com.example.firsttomcat.servlet.model.User" %>
+<%@ page import="com.example.firsttomcat.model.User" %>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

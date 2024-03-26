@@ -1,9 +1,7 @@
-package com.example.firsttomcat.servlet.servlet;
+package com.example.firsttomcat.servlet;
 
-import com.example.firsttomcat.servlet.model.DatabaseUtil;
-import com.example.firsttomcat.servlet.model.User;
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
+import com.example.firsttomcat.model.User;
+import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,10 +15,11 @@ import java.util.List;
 @WebServlet(name = "usersServlet", value = "/users-servlet")
 public class UsersServlet extends HttpServlet {
 
-    private static final Logger logger = LogManager.getLogger(MultiplyServlet.class);
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DatabaseUtil dbUtil = new DatabaseUtil();
-        List<User> users = dbUtil.getUsersList();
+    private static final Logger logger = LogManager.getLogger(UsersServlet.class);
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        DatabaseUtilImpl dbUtil = new DatabaseUtilImpl();
+        List<User> users = dbUtil.receiveUsersList();
 
         logger.info("Fetched " + users.size() + " users from the database");
 

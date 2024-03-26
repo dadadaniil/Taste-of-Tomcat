@@ -1,15 +1,15 @@
-package com.example.firsttomcat.servlet.service;
+package com.example.firsttomcat.service.impl;
 
-import com.example.firsttomcat.servlet.model.DatabaseUtil;
-import com.example.firsttomcat.servlet.model.User;
+import com.example.firsttomcat.model.User;
+import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
+import com.example.firsttomcat.service.UserService;
 import jakarta.mail.MessagingException;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.Random;
+public class UserServiceImpl implements UserService {
+    private final DatabaseUtilImpl databaseUtil = new DatabaseUtilImpl();
 
-public class UserService {
-    private DatabaseUtil databaseUtil = new DatabaseUtil();
-
+    @Override
     public User authenticate(String email, String password) {
         User user = databaseUtil.findUserByEmail(email);
         if (user != null && BCrypt.checkpw(password, user.getPassword())) {
@@ -18,12 +18,14 @@ public class UserService {
         return null;
     }
 
+    @Override
     public boolean userExists(String email) {
         User user = databaseUtil.findUserByEmail(email);
         return user != null;
     }
 
 
+    @Override
     public void register(String username, String password, String email) throws MessagingException {
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = new User(username, hashedPassword, email);
@@ -34,12 +36,8 @@ public class UserService {
 //        EmailUtility.sendConfirmationEmail(email, verificationCode);
     }
 
-    private String generateVerificationCode() {
-        // Generate a random 6-digit code
-        return String.format("%06d", new Random().nextInt(999999));
-    }
 
-
+    @Override
     public void changeUsername(String email, String newUsername) {
         User user = databaseUtil.findUserByEmail(email);
         if (user != null) {
@@ -47,10 +45,11 @@ public class UserService {
         }
     }
 
+    @Override
     public void createPost(String email, String postContent) {
-        // Implement this method according to your application's requirements
     }
 
+    @Override
     public void deleteAccount(String email) {
         databaseUtil.deleteUserByEmail(email);
     }
