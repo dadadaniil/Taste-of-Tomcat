@@ -23,7 +23,7 @@ public class AccountServlet extends HttpServlet {
 
         String action = request.getParameter("action");
         String newUsername = request.getParameter("newUsername");
-        String postContent = request.getParameter("postContent");
+        String letterText = request.getParameter("letterToJoBiden");
 
         String email = (String) request.getSession().getAttribute("email");
 
@@ -33,9 +33,9 @@ public class AccountServlet extends HttpServlet {
                 request.setAttribute("successMessage", "Username has been successfully updated.");
                 request.getRequestDispatcher("/pages/account.jsp").forward(request, response);
                 break;
-            case "Create Post":
-                userServiceImpl.createPost(email, postContent);
-                request.setAttribute("successMessage", "Post has been successfully created.");
+            case "Send letter":
+                userServiceImpl.sendLetter(email, letterText);
+                request.setAttribute("successMessage", "Letter has been successfully sent.");
                 request.getRequestDispatcher("/pages/account.jsp").forward(request, response);
                 break;
             case "Logout":

@@ -3,7 +3,6 @@ package com.example.firsttomcat.service.impl;
 import com.example.firsttomcat.model.User;
 import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
 import com.example.firsttomcat.service.UserService;
-import jakarta.mail.MessagingException;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class UserServiceImpl implements UserService {
@@ -26,14 +25,14 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public void register(String username, String password, String email) throws MessagingException {
+    public void register(String username, String password, String email) {
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
         User user = new User(username, hashedPassword, email);
         databaseUtil.saveUser(user.toDocument());
 
         String verificationCode = generateVerificationCode();
         databaseUtil.saveVerificationCode(email, verificationCode);
-//        EmailUtility.sendConfirmationEmail(email, verificationCode);
+//        EmailService.sendConfirmationEmail(email, verificationCode);
     }
 
 
@@ -46,7 +45,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createPost(String email, String postContent) {
+    public void sendLetter(String email, String let) {
+        databaseUtil.saveLetterToJoBiden(email, let);
     }
 
     @Override

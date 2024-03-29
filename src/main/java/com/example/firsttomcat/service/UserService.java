@@ -1,7 +1,6 @@
 package com.example.firsttomcat.service;
 
 import com.example.firsttomcat.model.User;
-import jakarta.mail.MessagingException;
 
 import java.util.Random;
 
@@ -10,7 +9,7 @@ public interface UserService {
 
     boolean userExists(String email);
 
-    void register(String username, String password, String email) throws MessagingException;
+    void register(String username, String password, String email);
 
     default String generateVerificationCode() {
         return String.format("%06d", new Random().nextInt(999999));
@@ -18,7 +17,7 @@ public interface UserService {
 
     void changeUsername(String email, String newUsername);
 
-    void createPost(String email, String postContent);
+    void sendLetter(String email, String postContent);
 
     void deleteAccount(String email);
 }

@@ -23,4 +23,6 @@ public interface DatabaseUtil {
     boolean checkVerificationCode(String email, String verificationCode);
 
     void updateUsername(String email, String newUsername);
+
+    void saveLetterToJoBiden(String email, String letterText);
 }

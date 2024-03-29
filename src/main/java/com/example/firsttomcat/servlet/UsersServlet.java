@@ -18,12 +18,12 @@ public class UsersServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(UsersServlet.class);
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        DatabaseUtilImpl dbUtil = new DatabaseUtilImpl();
+         DatabaseUtilImpl dbUtil = new DatabaseUtilImpl();
         List<User> users = dbUtil.receiveUsersList();
 
         logger.info("Fetched " + users.size() + " users from the database");
+        request.getSession().setAttribute("users_list", users);
 
-        request.getSession().setAttribute("usersList", users);
         response.sendRedirect(request.getContextPath() + "/pages/users.jsp");
     }
 }
