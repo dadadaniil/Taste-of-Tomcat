@@ -7,12 +7,19 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.gridfs.GridFSBucket;
+import com.mongodb.client.gridfs.GridFSBuckets;
+import com.mongodb.client.gridfs.model.GridFSFile;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bson.Document;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class DatabaseUtilImpl implements DatabaseUtil {
     private static final String DATABASE_NAME = "data_base";
@@ -118,5 +125,29 @@ public class DatabaseUtilImpl implements DatabaseUtil {
                 .append("letter", letterText);
         logger.info("Letter from user with email " + email + " was sent to Joe Biden");
         collection.insertOne(letter);
+    }
+
+    public void uploadFile(InputStream streamToUploadFrom, String fileName) {
+        MongoDatabase database = connection.getDatabase(DATABASE_NAME);
+        GridFSBucket gridBucket = GridFSBuckets.create(database);
+        gridBucket.uploadFromStream(fileName, streamToUploadFrom);
+
+        logger.info("File " + fileName + " was uploaded to the database");
+    }
+
+
+    public Optional<InputStream> downloadFile(String fileName) {
+        MongoDatabase database = connection.getDatabase(DATABASE_NAME);
+        GridFSBucket gridBucket = GridFSBuckets.create(database);
+        GridFSFile gridFSFile = gridBucket.find(eq("filename", fileName)).first();
+
+        if (gridFSFile != null) {
+            InputStream streamToDownloadTo = gridBucket.openDownloadStream(gridFSFile.getObjectId());
+            logger.info("File " + fileName + " was downloaded from the database");
+            return Optional.of(streamToDownloadTo);
+        } else {
+            logger.info("File " + fileName + " does not exist in the database");
+        }
+        return Optional.empty();
     }
 }

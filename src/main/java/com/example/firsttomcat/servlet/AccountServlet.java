@@ -1,24 +1,25 @@
 package com.example.firsttomcat.servlet;
 
+import com.example.firsttomcat.model.User;
+import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
 import com.example.firsttomcat.service.impl.UserServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Optional;
 
 @WebServlet(name = "accountServlet", value = "/account-servlet")
 public class AccountServlet extends HttpServlet {
-    private static final Logger logger = LogManager.getLogger(AccountServlet.class);
     private final UserServiceImpl userServiceImpl = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        logger.info("AccountServlet doPost");
-
         response.setContentType("text/html");
 
         String action = request.getParameter("action");
@@ -49,5 +50,25 @@ public class AccountServlet extends HttpServlet {
                 request.getSession().invalidate();
                 request.getRequestDispatcher("/pages/register.jsp").forward(request, response);
         }
+    }
+
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        response.setContentType("text/html");
+        String userEmail = (String) request.getSession().getAttribute("email");
+        DatabaseUtilImpl databaseUtil = new DatabaseUtilImpl();
+        User user = databaseUtil.findUserByEmail(userEmail);
+        request.setAttribute("user", user);
+
+        Optional<InputStream> optionalImageStream = databaseUtil.downloadFile(userEmail);
+
+        if (optionalImageStream.isPresent()) {
+            InputStream imageStream = optionalImageStream.get();
+            byte[] imageBytes = IOUtils.toByteArray(imageStream);
+            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            request.setAttribute("userImage", base64Image);
+        }
+
+        request.getRequestDispatcher("/pages/account.jsp").forward(request, response);
     }
 }

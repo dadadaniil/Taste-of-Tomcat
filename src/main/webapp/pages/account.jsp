@@ -12,6 +12,8 @@
     <div style="color: green;">${successMessage}</div>
 </c:if>
 
+<img src="data:image/png;base64,${userImage}" alt="User Image">
+
 <form action="${pageContext.request.contextPath}/account-servlet" method="post">
     <div>
         <label for="newUsername">New Username:</label>
