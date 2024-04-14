@@ -128,6 +128,7 @@ public class DatabaseUtilImpl implements DatabaseUtil {
     }
 
     public void uploadFile(InputStream streamToUploadFrom, String fileName) {
+        deleteFileByEmail(fileName);
         MongoDatabase database = connection.getDatabase(DATABASE_NAME);
         GridFSBucket gridBucket = GridFSBuckets.create(database);
         gridBucket.uploadFromStream(fileName, streamToUploadFrom);
@@ -149,5 +150,18 @@ public class DatabaseUtilImpl implements DatabaseUtil {
             logger.info("File " + fileName + " does not exist in the database");
         }
         return Optional.empty();
+    }
+
+    public void deleteFileByEmail(String fileName) {
+        MongoDatabase database = connection.getDatabase(DATABASE_NAME);
+        GridFSBucket gridBucket = GridFSBuckets.create(database);
+        GridFSFile gridFSFile = gridBucket.find(eq("filename", fileName)).first();
+
+        if (gridFSFile != null) {
+            gridBucket.delete(gridFSFile.getObjectId());
+            logger.info("File " + fileName + " was deleted from the database");
+        } else {
+            logger.info("File " + fileName + " does not exist in the database");
+        }
     }
 }

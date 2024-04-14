@@ -31,8 +31,8 @@ public class LoginServlet extends HttpServlet {
 
         if (user != null) {
             logger.info("User with email " + email + " logged in");
-            request.setAttribute("successMessage", "Now you are logged in and can manage your account.");
-            request.getRequestDispatcher("pages/account.jsp").forward(request, response);
+            request.getSession().setAttribute("successMessage", "Now you are logged in and can manage your account.");
+            response.sendRedirect(request.getContextPath() + "/account-servlet");
             sessionServiceImpl.createSession(request, email);
         } else {
             logger.info("Invalid credentials for email " + email);
