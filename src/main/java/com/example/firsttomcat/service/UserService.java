@@ -2,6 +2,7 @@ package com.example.firsttomcat.service;
 
 import com.example.firsttomcat.model.User;
 
+import java.io.InputStream;
 import java.util.Random;
 
 public interface UserService {
@@ -14,6 +15,8 @@ public interface UserService {
     default String generateVerificationCode() {
         return String.format("%06d", new Random().nextInt(999999));
     }
+
+    void uploadAvatar(InputStream inputStream, String email);
 
     void changeUsername(String email, String newUsername);
 

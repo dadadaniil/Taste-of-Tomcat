@@ -2,8 +2,11 @@ package com.example.firsttomcat.service.impl;
 
 import com.example.firsttomcat.model.User;
 import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
+import com.example.firsttomcat.service.EmailService;
 import com.example.firsttomcat.service.UserService;
 import org.mindrot.jbcrypt.BCrypt;
+
+import java.io.InputStream;
 
 public class UserServiceImpl implements UserService {
     private final DatabaseUtilImpl databaseUtil = new DatabaseUtilImpl();
@@ -30,9 +33,15 @@ public class UserServiceImpl implements UserService {
         User user = new User(username, hashedPassword, email);
         databaseUtil.saveUser(user.toDocument());
 
-        String verificationCode = generateVerificationCode();
-        databaseUtil.saveVerificationCode(email, verificationCode);
-//        EmailService.sendConfirmationEmail(email, verificationCode);
+//        String verificationCode = generateVerificationCode();
+//        databaseUtil.saveVerificationCode(email, verificationCode);
+        EmailService.sendConfirmationEmail(email);
+    }
+
+    @Override
+    public void uploadAvatar(InputStream inputStream, String email) {
+        databaseUtil.deleteFileByEmail(email);
+        databaseUtil.uploadFile(inputStream, email);
     }
 
 
