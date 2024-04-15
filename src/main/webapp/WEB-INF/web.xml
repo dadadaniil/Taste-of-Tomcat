@@ -18,7 +18,7 @@
     <!--        </error-page>-->
     <servlet>
         <servlet-name>usersServlet</servlet-name>
-        <servlet-class>com.example.firsttomcat.servlet.UsersServlet</servlet-class>
+        <servlet-class>com.example.firsttomcat.servlet.UserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>

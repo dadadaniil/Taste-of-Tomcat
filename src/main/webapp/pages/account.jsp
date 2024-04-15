@@ -9,13 +9,13 @@
 <c:choose>
     <c:when test="${not empty sessionScope.successMessage}">
         <div style="color: green;">${sessionScope.successMessage}</div>
-        <c:remove var="successMessage" scope="session" />
+        <c:remove var="successMessage" scope="session"/>
     </c:when>
-    <c:when test="${not empty errorMessage}">
-        <div style="color: red;">${errorMessage}</div>
+    <c:when test="${not empty requestScope.errorMessage}">
+        <div style="color: red;">${requestScope.errorMessage}</div>
     </c:when>
-    <c:when test="${not empty successMessage}">
-        <div style="color: green;">${successMessage}</div>
+    <c:when test="${not empty requestScope.successMessage}">
+        <div style="color: green;">${requestScope.successMessage}</div>
     </c:when>
 </c:choose>
 
@@ -51,6 +51,11 @@
     <div>
         <label for="email">Email:</label>
         <span>${user.email}</span>
+    </div>
+    <div>
+        <label for="letterToJoBiden">New letter to Joe Biden:</label>
+        <textarea id="letterToJoBiden" name="letterToJoBiden"></textarea>
+        <input type="submit" name="action" value="Send letter">
     </div>
     <div>
         <input type="submit" name="action" value="Logout">
