@@ -103,6 +103,7 @@ public class AccountServlet extends HttpServlet {
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
             request.setAttribute("userImage", base64Image);
         }
+
         request.getRequestDispatcher("/pages/account.jsp").forward(request, response);
         request.getSession().removeAttribute(ATTR_SUCCESS_MESSAGE);
     }

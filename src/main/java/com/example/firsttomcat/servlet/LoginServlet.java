@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-@WebServlet(name = LoginServlet.SERVLET_NAME, value = LoginServlet.SERVLET_VALUE)
+@WebServlet(name = "loginServlet", value = "/login-servlet")
 public class LoginServlet extends HttpServlet {
     static final String SERVLET_NAME = "loginServlet";
     static final String SERVLET_VALUE = "/login-servlet";
@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         logger.info("LoginServlet doPost");
 
-        response.setContentType(CONTENT_TYPE);
+        response.setContentType("text/html");
 
         String email = request.getParameter(PARAM_EMAIL);
         String password = request.getParameter(PARAM_PASSWORD);
