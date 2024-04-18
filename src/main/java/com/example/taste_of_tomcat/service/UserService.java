@@ -1,6 +1,6 @@
-package com.example.firsttomcat.service;
+package com.example.taste_of_tomcat.service;
 
-import com.example.firsttomcat.model.User;
+import com.example.taste_of_tomcat.model.User;
 
 import java.io.InputStream;
 import java.util.Random;

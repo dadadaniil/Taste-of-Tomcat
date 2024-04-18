@@ -18,10 +18,13 @@
             </error-page>
     <servlet>
         <servlet-name>usersServlet</servlet-name>
-        <servlet-class>com.example.firsttomcat.servlet.UserServlet</servlet-class>
+        <servlet-class>com.example.taste_of_tomcat.servlet.UserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>usersServlet</servlet-name>
         <url-pattern>/users-servlet</url-pattern>
     </servlet-mapping>
+    <listener>
+        <listener-class>com.example.taste_of_tomcat.servlet.listener.UserActivityListener</listener-class>
+    </listener>
 </web-app>

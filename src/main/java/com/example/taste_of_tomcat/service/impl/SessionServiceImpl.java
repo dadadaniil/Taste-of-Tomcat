@@ -1,6 +1,6 @@
-package com.example.firsttomcat.service.impl;
+package com.example.taste_of_tomcat.service.impl;
 
-import com.example.firsttomcat.service.SessionService;
+import com.example.taste_of_tomcat.service.SessionService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 

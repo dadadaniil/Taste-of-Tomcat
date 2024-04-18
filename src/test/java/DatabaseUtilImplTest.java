@@ -1,4 +1,4 @@
-import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
+import com.example.taste_of_tomcat.model.impl.DatabaseUtilImpl;
 import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;

@@ -39,4 +39,4 @@ build/
 .DS_Store
 
 ###Protected folder
-/src/main/java/com/example/firsttomcat/service/EmailConfigConstants.java
+/src/main/java/com/example/taste_of_tomcat/service/EmailConfigConstants.java

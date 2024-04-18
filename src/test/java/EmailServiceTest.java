@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 
-import static com.example.firsttomcat.service.EmailService.sendConfirmationEmail;
+import static com.example.taste_of_tomcat.service.EmailService.sendConfirmationEmail;
 
 public class EmailServiceTest {
 

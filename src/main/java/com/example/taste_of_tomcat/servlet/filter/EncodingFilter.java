@@ -1,4 +1,4 @@
-package com.example.firsttomcat.filter;
+package com.example.taste_of_tomcat.servlet.filter;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;

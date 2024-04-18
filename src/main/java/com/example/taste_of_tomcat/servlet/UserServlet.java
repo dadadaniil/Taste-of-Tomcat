@@ -1,7 +1,7 @@
-package com.example.firsttomcat.servlet;
+package com.example.taste_of_tomcat.servlet;
 
-import com.example.firsttomcat.model.User;
-import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
+import com.example.taste_of_tomcat.model.User;
+import com.example.taste_of_tomcat.model.impl.DatabaseUtilImpl;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;

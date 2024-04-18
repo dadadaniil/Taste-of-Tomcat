@@ -1,9 +1,9 @@
-package com.example.firsttomcat.service.impl;
+package com.example.taste_of_tomcat.service.impl;
 
-import com.example.firsttomcat.model.User;
-import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
-import com.example.firsttomcat.service.EmailService;
-import com.example.firsttomcat.service.UserService;
+import com.example.taste_of_tomcat.model.User;
+import com.example.taste_of_tomcat.model.impl.DatabaseUtilImpl;
+import com.example.taste_of_tomcat.service.EmailService;
+import com.example.taste_of_tomcat.service.UserService;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.InputStream;

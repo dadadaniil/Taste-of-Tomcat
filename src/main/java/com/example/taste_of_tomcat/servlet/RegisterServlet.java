@@ -1,6 +1,6 @@
-package com.example.firsttomcat.servlet;
+package com.example.taste_of_tomcat.servlet;
 
-import com.example.firsttomcat.service.impl.UserServiceImpl;
+import com.example.taste_of_tomcat.service.impl.UserServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-import static com.example.firsttomcat.service.EmailService.sendConfirmationEmail;
+import static com.example.taste_of_tomcat.service.EmailService.sendConfirmationEmail;
 
 @WebServlet(name = "registerServlet", value = "/register-servlet")
 public class RegisterServlet extends HttpServlet {

@@ -1,8 +1,8 @@
-package com.example.firsttomcat.model.impl;
+package com.example.taste_of_tomcat.model.impl;
 
-import com.example.firsttomcat.model.DatabaseUtil;
-import com.example.firsttomcat.model.MongoDBConnection;
-import com.example.firsttomcat.model.User;
+import com.example.taste_of_tomcat.model.DatabaseUtil;
+import com.example.taste_of_tomcat.model.MongoDBConnection;
+import com.example.taste_of_tomcat.model.User;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;

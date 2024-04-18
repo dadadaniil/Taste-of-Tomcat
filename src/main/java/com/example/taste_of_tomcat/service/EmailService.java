@@ -1,4 +1,4 @@
-package com.example.firsttomcat.service;
+package com.example.taste_of_tomcat.service;
 
 import org.springframework.mail.SimpleMailMessage;
 

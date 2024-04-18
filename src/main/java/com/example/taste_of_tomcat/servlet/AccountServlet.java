@@ -1,8 +1,8 @@
-package com.example.firsttomcat.servlet;
+package com.example.taste_of_tomcat.servlet;
 
-import com.example.firsttomcat.model.User;
-import com.example.firsttomcat.model.impl.DatabaseUtilImpl;
-import com.example.firsttomcat.service.impl.UserServiceImpl;
+import com.example.taste_of_tomcat.model.User;
+import com.example.taste_of_tomcat.model.impl.DatabaseUtilImpl;
+import com.example.taste_of_tomcat.service.impl.UserServiceImpl;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
