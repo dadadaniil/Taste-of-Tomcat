@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Internal Server Error</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/500.css">
 </head>
 <body>
 <h1>500 - Internal Server Error</h1>

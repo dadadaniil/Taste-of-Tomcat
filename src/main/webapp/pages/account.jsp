@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Account Management</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/account.css">
 </head>
 <body>
 <h2>Account Management</h2>
@@ -57,9 +58,12 @@
         <textarea id="letterToJoBiden" name="letterToJoBiden"></textarea>
         <input type="submit" name="action" value="Send letter">
     </div>
-    <div>
-        <input type="submit" name="action" value="Logout">
-        <input type="submit" name="action" value="Delete Account">
+    <div class="lower-buttons">
+        <form action="${pageContext.request.contextPath}/account-servlet" method="post">
+            <input type="submit" name="action" value="Logout">
+            <input type="submit" name="action" value="Delete Account">
+        </form>
+
     </div>
 </form>
 </body>

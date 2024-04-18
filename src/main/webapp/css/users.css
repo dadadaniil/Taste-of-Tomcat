@@ -1,0 +1,41 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    color: #007bff;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Table header styles */
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Table row hover effect */
+tr:hover {
+    background-color: #f0f0f0;
+}

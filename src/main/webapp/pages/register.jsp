@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/register.css">
 </head>
 <body>
 <h2>Register Page</h2>

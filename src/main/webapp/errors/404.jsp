@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Page Not Found</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/404.css">
 </head>
 <body>
 <h1>404 - Page Not Found</h1>

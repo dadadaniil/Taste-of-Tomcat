@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Error</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/error.css">
 </head>
 <body>
     <h1>Error</h1>

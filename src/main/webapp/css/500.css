@@ -1,0 +1,28 @@
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    text-align: center; /* Center align content */
+}
+
+/* Heading styles */
+h1 {
+    color: #dc3545; /* Red color for error message */
+}
+
+/* Paragraph styles */
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Image styles */
+img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}

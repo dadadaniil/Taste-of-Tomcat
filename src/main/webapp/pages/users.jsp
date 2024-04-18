@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>Users List</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/users.css">
 </head>
 <body>
 <h1>Users List</h1>
