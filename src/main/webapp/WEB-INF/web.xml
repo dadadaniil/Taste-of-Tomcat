@@ -12,10 +12,10 @@
         <param-name>upload.location</param-name>
         <param-value>/</param-value>
     </context-param>
-            <error-page>
-                <error-code>500</error-code>
-                <location>/errors/500.jsp</location>
-            </error-page>
+<!--            <error-page>-->
+<!--                <error-code>500</error-code>-->
+<!--                <location>/errors/500.jsp</location>-->
+<!--            </error-page>-->
     <servlet>
         <servlet-name>usersServlet</servlet-name>
         <servlet-class>com.example.taste_of_tomcat.servlet.UserServlet</servlet-class>
