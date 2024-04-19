@@ -19,7 +19,7 @@ public class VerifyServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("VerifyServlet doPost");
 
-        response.setContentType("text/html");
+
 
         String email = request.getParameter("email");
         String code = request.getParameter("code");

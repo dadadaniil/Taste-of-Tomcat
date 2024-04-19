@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         logger.info("LoginServlet doPost");
 
-        response.setContentType("text/html");
+
 
         String email = request.getParameter(PARAM_EMAIL);
         String password = request.getParameter(PARAM_PASSWORD);

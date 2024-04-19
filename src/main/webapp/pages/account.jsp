@@ -58,12 +58,11 @@
         <textarea id="letterToJoBiden" name="letterToJoBiden"></textarea>
         <input type="submit" name="action" value="Send letter">
     </div>
-    <div class="lower-buttons">
+    <div>
         <form action="${pageContext.request.contextPath}/account-servlet" method="post">
             <input type="submit" name="action" value="Logout">
             <input type="submit" name="action" value="Delete Account">
         </form>
-
     </div>
 </form>
 </body>

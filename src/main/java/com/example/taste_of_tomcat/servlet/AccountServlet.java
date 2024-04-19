@@ -41,7 +41,7 @@ public class AccountServlet extends HttpServlet {
     private final UserServiceImpl userServiceImpl = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
+
 
         String action = request.getParameter(PARAM_ACTION);
         String newUsername = request.getParameter(PARAM_NEW_USERNAME);
@@ -82,7 +82,7 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
+
         String userEmail = (String) request.getSession().getAttribute(ATTR_EMAIL);
         DatabaseUtilImpl databaseUtil = new DatabaseUtilImpl();
         User user = databaseUtil.findUserByEmail(userEmail);

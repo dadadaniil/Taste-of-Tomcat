@@ -19,7 +19,7 @@ public class RegisterServlet extends HttpServlet {
     private final UserServiceImpl userServiceImpl = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        response.setContentType("text/html");
+
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
