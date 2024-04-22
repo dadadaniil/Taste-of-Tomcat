@@ -1,11 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.locale}"/>
+<fmt:setBundle basename="localization.messages"/>
 <html>
 <head>
-    <title>Account Management</title>
+    <title><fmt:message key="account_management"/></title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/account.css">
 </head>
 <body>
-<h2>Account Management</h2>
+<h2><fmt:message key="account_management"/></h2>
 
 <c:choose>
     <c:when test="${not empty sessionScope.successMessage}">
@@ -20,7 +23,6 @@
     </c:when>
 </c:choose>
 
-<!-- Rest of your code -->
 </body>
 </html>
 
@@ -35,33 +37,33 @@
 <form action="${pageContext.request.contextPath}/account-servlet" method="post" enctype="multipart/form-data">
     <img class="user-image" src="data:image/png;base64,${userImage}" alt="User Image">
     <div>
-        <label for="avatar">New Avatar:</label>
+        <label for="avatar"><fmt:message key="new_avatar"/>:</label>
         <input type="file" id="avatar" name="avatar">
-        <input type="submit" name="action" value="Upload Avatar">
+        <input type="submit" name="action" value="<fmt:message key="upload_avatar_button" />">
 
     </div>
     <div>
-        <label for="username">Username:</label>
+        <label for="username"><fmt:message key="username"/>:</label>
         <span>${user.username}</span>
     </div>
     <div>
-        <label for="newUsername">New Username:</label>
+        <label for="newUsername"><fmt:message key="new_username"/>:</label>
         <input type="text" id="newUsername" name="newUsername">
-        <input type="submit" name="action" value="Change Username">
+        <input type="submit" name="action" value="<fmt:message key="change_username_button" />">
     </div>
     <div>
-        <label for="email">Email:</label>
+        <label for="email"><fmt:message key="email"/>:</label>
         <span>${user.email}</span>
     </div>
     <div>
         <label for="letterToJoBiden">New letter to Joe Biden:</label>
         <textarea id="letterToJoBiden" name="letterToJoBiden"></textarea>
-        <input type="submit" name="action" value="Send letter">
+        <input type="submit" name="action" value="<fmt:message key="send_letter_button" />">
     </div>
     <div>
         <form action="${pageContext.request.contextPath}/account-servlet" method="post">
-            <input type="submit" name="action" value="Logout">
-            <input type="submit" name="action" value="Delete Account">
+            <input type="submit" name="action" value="<fmt:message key="logout_button" />">
+            <input type="submit" name="action" value="<fmt:message key="delete_account_button" />">
         </form>
     </div>
 </form>

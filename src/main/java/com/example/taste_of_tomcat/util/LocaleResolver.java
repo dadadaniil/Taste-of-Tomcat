@@ -10,11 +10,8 @@ public class LocaleResolver {
     public Locale resolveLocale(HttpServletRequest request) {
         String acceptLanguage = request.getHeader("Accept-Language");
         Locale locale = acceptLanguage != null ? Locale.forLanguageTag(acceptLanguage) : Locale.getDefault();
-
         ResourceBundle bundle = ResourceBundle.getBundle("localization/messages", locale);
-
         request.getSession().setAttribute("bundle", bundle);
-
         return locale;
     }
 }

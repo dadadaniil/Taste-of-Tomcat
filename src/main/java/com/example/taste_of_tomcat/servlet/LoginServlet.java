@@ -48,6 +48,7 @@ public class LoginServlet extends HttpServlet {
             request.getSession().setAttribute("locale", locale);
             response.sendRedirect(request.getContextPath() + REDIRECT_PATH);
             sessionServiceImpl.createSession(request, email);
+
         } else {
             logger.info("Invalid credentials for email " + email);
             request.setAttribute(ATTR_ERROR_MESSAGE, "Invalid credentials for email " + email);

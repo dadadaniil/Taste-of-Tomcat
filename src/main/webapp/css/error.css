@@ -1,4 +1,3 @@
-/* Body styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f8f9fa;
@@ -7,14 +6,12 @@ body {
     padding: 20px;
 }
 
-/* Heading styles */
 h1 {
     text-align: center;
     color: #007bff;
     margin-bottom: 20px;
 }
 
-/* Paragraph styles */
 p {
     font-size: 18px;
     line-height: 1.6;
@@ -22,7 +19,6 @@ p {
     margin-bottom: 20px;
 }
 
-/* Link styles */
 a {
     color: #007bff;
     text-decoration: none;

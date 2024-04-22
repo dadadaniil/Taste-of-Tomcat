@@ -19,6 +19,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Base64;
+import java.util.Locale;
 import java.util.Optional;
 
 @WebServlet(name = "accountServlet", value = "/account-servlet")
@@ -41,8 +42,6 @@ public class AccountServlet extends HttpServlet {
     private final UserServiceImpl userServiceImpl = new UserServiceImpl();
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-
         String action = request.getParameter(PARAM_ACTION);
         String newUsername = request.getParameter(PARAM_NEW_USERNAME);
         String letterText = request.getParameter(PARAM_LETTER_TO_JO_BIDEN);
@@ -82,7 +81,6 @@ public class AccountServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
         String userEmail = (String) request.getSession().getAttribute(ATTR_EMAIL);
         DatabaseUtilImpl databaseUtil = new DatabaseUtilImpl();
         User user = databaseUtil.findUserByEmail(userEmail);
